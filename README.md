@@ -1,7 +1,7 @@
 This project aims to make SDAT Editing with NitroComposer / NitroSystem Sound Maker easier for Pokemon HGSS by splitting each of it's sound data files into 4 SARC files.
 
 # Getting Started
-For documentation, see the `/docs` folder. For documentation on adding/removing/editing sounds, use the SDK as a reference.
+For documentation, see the `/docs` folder. For documentation on how the HGSS Sound Engine works, however please use the SDK Documentation in ``docs/NitroComposer`` as a reference for editing the SARC Files.
 
 ## Installation
 In order to install and modify, you will need:
