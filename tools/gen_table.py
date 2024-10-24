@@ -1,3 +1,4 @@
+# Let's create definitions that people can change easily
 soundInclude = "../gs_sound_data.sbdl"
 pvPrefix = "SEQ_PV_"
 bgmPrefix = "SEQ_GS_"
