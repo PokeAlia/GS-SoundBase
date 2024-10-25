@@ -1,11 +1,11 @@
 # Let's create definitions that people can change easily
 soundInclude = "../gs_sound_data.sbdl"
-bgmPrefix = "SEQ_GS"
+bgmPrefix = "SEQ_BGM"
 pvPrefix = "SEQ_PV"
 mePrefix = "SEQ_ME"
 sePrefix = "SEQ_SE"
 
-outputDir = "../docs"
+outputDir = "../docs/"
 
 # Variable Inits
 bgmNames = []
@@ -22,28 +22,23 @@ seIds = []
 
 si = open(soundInclude) # include SoundFile Database
 
+print("Detecting useful SEQs from SBDL")
 while True:
         line = si.readline()
-        print("Pre form " + line)
         line = line.split()
-        print(line)
         try:
                 if line[1].startswith(bgmPrefix) == True:
                     bgmNames.append(line[1])
                     bgmIds.append(line[2])
-                    print("Valid BGM\n---------")
                 elif line[1].startswith(pvPrefix) == True:
                     pvNames.append(line[1])
                     pvIds.append(line[2])
-                    print("Valid PV\n---------")
                 elif line[1].startswith(sePrefix) == True:
                     seNames.append(line[1])
                     seIds.append(line[2])
-                    print("Valid SE\n---------")
                 elif line[1].startswith(mePrefix) == True:
                     meNames.append(line[1])
                     meIds.append(line[2])
-                    print("Valid ME\n---------")
         except IndexError:
                 print("\nFinished detection!")
                 break
@@ -76,8 +71,8 @@ out.write("<html>\n<head><link rel='stylesheet' href='./main.css'></head><body>\
 print(len(pvIds))
 
 while a != len(pvIds):
-                out.write("<tr><td>" + pvIds[a] + "</td><td>" + pvIds[a] + "</td></tr>\n")
-                print("Output: " + pvIds[a] + " - " + pvIds[a])
+                out.write("<tr><td>" + pvIds[a] + "</td><td>" + pvNames[a] + "</td></tr>\n")
+                print("Output: " + pvIds[a] + " - " + pvNames[a])
                 a = a+1
 
 out.write("</table>\n</body>\n</html>")
@@ -95,8 +90,8 @@ out.write("<html>\n<head><link rel='stylesheet' href='./main.css'></head><body>\
 print(len(seIds))
 
 while a != len(seIds):
-                out.write("<tr><td>" + seIds[a] + "</td><td>" + seIds[a] + "</td></tr>\n")
-                print("Output: " + seIds[a] + " - " + seIds[a])
+                out.write("<tr><td>" + seIds[a] + "</td><td>" + seNames[a] + "</td></tr>\n")
+                print("Output: " + seIds[a] + " - " + seNames[a])
                 a = a+1
 
 out.write("</table>\n</body>\n</html>")
@@ -115,8 +110,8 @@ out.write("<html>\n<head><link rel='stylesheet' href='./main.css'></head><body>\
 print(len(meIds))
 
 while a != len(meIds):
-                out.write("<tr><td>" + meIds[a] + "</td><td>" + meIds[a] + "</td></tr>\n")
-                print("Output: " + meIds[a] + " - " + meIds[a])
+                out.write("<tr><td>" + meIds[a] + "</td><td>" + meNames[a] + "</td></tr>\n")
+                print("Output: " + meIds[a] + " - " + meNames[a])
                 a = a+1
 
 out.write("</table>\n</body>\n</html>")
