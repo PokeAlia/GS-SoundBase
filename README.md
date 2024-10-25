@@ -9,6 +9,7 @@ In order to install and modify, you will need:
 *  A text editor, such as Notepad++ or Visual Studio Code
 *  Git
 *  Microsoft Windows 7 or above
+*  Python 3 (to compile the ``/docs/sound_list.html`` sub tables).
 
 Open up Command Prompt and navigate to the folder you wish to place the project files in, then run ``git clone https://github.com/PokeAlia/GS-SoundBase``.
 
