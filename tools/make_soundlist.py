@@ -1,544 +1,128 @@
-Python 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)] on win32
-Type "help", "copyright", "credits" or "license()" for more information.
+# Let's create definitions that people can change easily
+soundInclude = "../gs_sound_data.sbdl"
+bgmPrefix = "SEQ_GS"
+pvPrefix = "SEQ_PV"
+mePrefix = "SEQ_ME"
+sePrefix = "SEQ_SE"
 
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-SEQ_GS_TITLE 1
+outputDir = ""
 
-SEQ_SE_TITLE 2
+# Variable Inits
+bgmNames = []
+bgmIds = []
 
-SEQ_ME_TITLE 3
+pvNames = []
+pvIds = []
 
-SEQ_PV_001 4
+meNames = []
+meIds = []
 
+seNames = []
+seIds = []
 
-Finished detection!
-4
-Output: E - S
-Output: E - S
-Output: E - S
-Output: E - S
+si = open(soundInclude) # include SoundFile Database
 
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Traceback (most recent call last):
-  File "C:\Users\raven\Downloads\sdat\make.py", line 14, in <module>
-    print(line)
-NameError: name 'line' is not defined
+while True:
+        line = si.readline()
+        print("Pre form " + line)
+        line = line.split()
+        print(line)
+        try:
+                if line[1].startswith(bgmPrefix) == True:
+                    bgmNames.append(line[1])
+                    bgmIds.append(line[2])
+                    print("Valid BGM\n---------")
+                elif line[1].startswith(pvPrefix) == True:
+                    pvNames.append(line[1])
+                    pvIds.append(line[2])
+                    print("Valid PV\n---------")
+                elif line[1].startswith(sePrefix) == True:
+                    seNames.append(line[1])
+                    seIds.append(line[2])
+                    print("Valid SE\n---------")
+                elif line[1].startswith(mePrefix) == True:
+                    meNames.append(line[1])
+                    meIds.append(line[2])
+                    print("Valid ME\n---------")
+        except IndexError:
+                print("\nFinished detection!")
+                break
+si.close()
 
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-#define SEQ_GS_TITLE 1
+a = 0
+out = open(outputDir + "list/bgm_list.html", 'w')
 
-SEQ_GS_TITLE 1
+out.write("<html>\n<head><link rel='stylesheet' href='./main.css'></head><body>\n<table>\n<tr><th>ID</th><th>Filename</th></tr>\n")
 
-#define SEQ_SE_TITLE 2
+print(len(bgmIds))
 
-SEQ_SE_TITLE 2
+while a != len(bgmIds):
+                out.write("<tr><td>" + bgmIds[a] + "</td><td>" + bgmNames[a] + "</td></tr>\n")
+                print("Output: " + bgmIds[a] + " - " + bgmNames[a])
+                a = a+1
 
-#define SEQ_ME_TITLE 3
+out.write("</table>\n</body>\n</html>")
 
-SEQ_ME_TITLE 3
+out.close()
 
-#define SEQ_PV_001 4
-SEQ_PV_001 4
+print("Output BGM")
 
+a = 0
 
+out = open(outputDir + "list/pv_list.html", 'w')
 
-Finished detection!
-4
-Output: E - S
-Output: E - S
-Output: E - S
-Output: E - S
+out.write("<html>\n<head><link rel='stylesheet' href='./main.css'></head><body>\n<table>\n<tr><th>ID</th><th>Filename</th></tr>\n")
 
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-#define SEQ_GS_TITLE 1
+print(len(pvIds))
 
-SEQ_GS_TITLE 1
+while a != len(pvIds):
+                out.write("<tr><td>" + pvIds[a] + "</td><td>" + pvIds[a] + "</td></tr>\n")
+                print("Output: " + pvIds[a] + " - " + pvIds[a])
+                a = a+1
 
-SEQ_GS_TITLE 1
+out.write("</table>\n</body>\n</html>")
 
-#define SEQ_SE_TITLE 2
+out.close()
 
-SEQ_SE_TITLE 2
+print("Output PV")
 
-SEQ_SE_TITLE 2
+a = 0
 
-#define SEQ_ME_TITLE 3
+out = open(outputDir + "list/se_list.html", 'w')
 
-SEQ_ME_TITLE 3
+out.write("<html>\n<head><link rel='stylesheet' href='./main.css'></head><body>\n<table>\n<tr><th>ID</th><th>Filename</th></tr>\n")
 
-SEQ_ME_TITLE 3
+print(len(seIds))
 
-#define SEQ_PV_001 4
-SEQ_PV_001 4
-SEQ_PV_001 4
+while a != len(seIds):
+                out.write("<tr><td>" + seIds[a] + "</td><td>" + seIds[a] + "</td></tr>\n")
+                print("Output: " + seIds[a] + " - " + seIds[a])
+                a = a+1
 
+out.write("</table>\n</body>\n</html>")
 
+out.close()
 
+print("Output SE")
 
-Finished detection!
-4
-Output: E - S
-Output: E - S
-Output: E - S
-Output: E - S
+a = 0
 
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-#define SEQ_GS_TITLE 1
 
-SEQ_GS_TITLE 1
+out = open(outputDir + "list/me_list.html", 'w')
 
-Post conv SEQ_GS_TITLE 1
+out.write("<html>\n<head><link rel='stylesheet' href='./main.css'></head><body>\n<table>\n<tr><th>ID</th><th>Filename</th></tr>\n")
 
-#define SEQ_SE_TITLE 2
+print(len(meIds))
 
-SEQ_SE_TITLE 2
+while a != len(meIds):
+                out.write("<tr><td>" + meIds[a] + "</td><td>" + meIds[a] + "</td></tr>\n")
+                print("Output: " + meIds[a] + " - " + meIds[a])
+                a = a+1
 
-Post conv SEQ_SE_TITLE 2
+out.write("</table>\n</body>\n</html>")
 
-#define SEQ_ME_TITLE 3
+out.close()
 
-SEQ_ME_TITLE 3
+print("Output ME")
 
-Post conv SEQ_ME_TITLE 3
-
-#define SEQ_PV_001 4
-SEQ_PV_001 4
-Post conv SEQ_PV_001 4
-
-
-Post conv 
-
-Finished detection!
-4
-Output: E - S
-Output: E - S
-Output: E - S
-Output: E - S
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-Pre conv SEQ_GS_TITLE 1
-
-Post conv SEQ_GS_TITLE 1
-
-Pre form #define SEQ_SE_TITLE 2
-
-Pre conv SEQ_SE_TITLE 2
-
-Post conv SEQ_SE_TITLE 2
-
-Pre form #define SEQ_ME_TITLE 3
-
-Pre conv SEQ_ME_TITLE 3
-
-Post conv SEQ_ME_TITLE 3
-
-Pre form #define SEQ_PV_001 4
-Pre conv SEQ_PV_001 4
-Post conv SEQ_PV_001 4
-Pre form 
-Pre conv 
-Post conv 
-
-Finished detection!
-4
-Output: E - S
-Output: E - S
-Output: E - S
-Output: E - S
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-Pre conv SEQ_GS_TITLE 1
-
-Post conv SEQ_GS_TITLE 1
-
-Pre form #define SEQ_SE_TITLE 2
-
-Pre conv SEQ_SE_TITLE 2
-
-Post conv SEQ_SE_TITLE 2
-
-Pre form #define SEQ_ME_TITLE 3
-
-Pre conv SEQ_ME_TITLE 3
-
-Post conv SEQ_ME_TITLE 3
-
-Pre form #define SEQ_PV_001 4
-Pre conv SEQ_PV_001 4
-Post conv SEQ_PV_001 4
-Pre form 
-Pre conv 
-Post conv 
-
-Finished detection!
-4
-Output: E - S
-Output: E - S
-Output: E - S
-Output: E - S
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-Pre conv SEQ_GS_TITLE 1
-
-Post conv SEQ_GS_TITLE 1
-
-Valid SEQ
----------
-Pre form #define SEQ_SE_TITLE 2
-
-Pre conv SEQ_SE_TITLE 2
-
-Post conv SEQ_SE_TITLE 2
-
-Valid SEQ
----------
-Pre form #define SEQ_ME_TITLE 3
-
-Pre conv SEQ_ME_TITLE 3
-
-Post conv SEQ_ME_TITLE 3
-
-Valid SEQ
----------
-Pre form #define SEQ_PV_001 4
-Pre conv SEQ_PV_001 4
-Post conv SEQ_PV_001 4
-Valid SEQ
----------
-Pre form 
-Pre conv 
-Post conv 
-
-Finished detection!
-4
-Output: E - S
-Output: E - S
-Output: E - S
-Output: E - S
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-Post conv #define SEQ_GS_TITLE 1
-
-Valid SEQ
----------
-Pre form #define SEQ_SE_TITLE 2
-
-Post conv #define SEQ_SE_TITLE 2
-
-Valid SEQ
----------
-Pre form #define SEQ_ME_TITLE 3
-
-Post conv #define SEQ_ME_TITLE 3
-
-Valid SEQ
----------
-Pre form #define SEQ_PV_001 4
-Post conv #define SEQ_PV_001 4
-Valid SEQ
----------
-Pre form 
-Post conv 
-
-Finished detection!
-4
-Output: d - #
-Output: d - #
-Output: d - #
-Output: d - #
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-Pre conv SEQ_GS_TITLE 1
-
-Traceback (most recent call last):
-  File "C:\Users\raven\Downloads\sdat\make.py", line 19, in <module>
-    print("Post conv " + line)
-TypeError: can only concatenate str (not "list") to str
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-Traceback (most recent call last):
-  File "C:\Users\raven\Downloads\sdat\make.py", line 17, in <module>
-    print("Post conv " + line)
-TypeError: can only concatenate str (not "list") to str
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-['#define', 'SEQ_GS_TITLE', '1']
-Valid SEQ
----------
-Pre form #define SEQ_SE_TITLE 2
-
-['#define', 'SEQ_SE_TITLE', '2']
-Valid SEQ
----------
-Pre form #define SEQ_ME_TITLE 3
-
-['#define', 'SEQ_ME_TITLE', '3']
-Valid SEQ
----------
-Pre form #define SEQ_PV_001 4
-['#define', 'SEQ_PV_001', '4']
-Valid SEQ
----------
-Pre form 
-[]
-
-Finished detection!
-4
-Output: SEQ_GS_TITLE - #define
-Output: SEQ_SE_TITLE - #define
-Output: SEQ_ME_TITLE - #define
-Output: SEQ_PV_001 - #define
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-['#define', 'SEQ_GS_TITLE', '1']
-Valid SEQ
----------
-Pre form #define SEQ_SE_TITLE 2
-
-['#define', 'SEQ_SE_TITLE', '2']
-Valid SEQ
----------
-Pre form #define SEQ_ME_TITLE 3
-
-['#define', 'SEQ_ME_TITLE', '3']
-Valid SEQ
----------
-Pre form #define SEQ_PV_001 4
-['#define', 'SEQ_PV_001', '4']
-Valid SEQ
----------
-Pre form 
-[]
-
-Finished detection!
-4
-Output: SEQ_GS_TITLE - 1
-Output: SEQ_SE_TITLE - 2
-Output: SEQ_ME_TITLE - 3
-Output: SEQ_PV_001 - 4
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-['#define', 'SEQ_GS_TITLE', '1']
-Valid SEQ
----------
-Pre form #define SEQ_SE_TITLE 2
-
-['#define', 'SEQ_SE_TITLE', '2']
-Valid SEQ
----------
-Pre form #define SEQ_ME_TITLE 3
-
-['#define', 'SEQ_ME_TITLE', '3']
-Valid SEQ
----------
-Pre form #define SEQ_PV_001 4
-['#define', 'SEQ_PV_001', '4']
-Valid SEQ
----------
-Pre form 
-[]
-
-Finished detection!
-4
-Output: 1 - SEQ_GS_TITLE
-Output: 2 - SEQ_SE_TITLE
-Output: 3 - SEQ_ME_TITLE
-Output: 4 - SEQ_PV_001
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-['#define', 'SEQ_GS_TITLE', '1']
-Valid SEQ
----------
-Pre form #define SEQ_SE_TITLE 2
-
-['#define', 'SEQ_SE_TITLE', '2']
-Valid SEQ
----------
-Pre form #define SEQ_ME_TITLE 3
-
-['#define', 'SEQ_ME_TITLE', '3']
-Valid SEQ
----------
-Pre form #define SEQ_PV_001 4
-['#define', 'SEQ_PV_001', '4']
-Valid SEQ
----------
-Pre form 
-[]
-
-Finished detection!
-4
-Output: 1 - SEQ_GS_TITLE
-Output: 2 - SEQ_SE_TITLE
-Output: 3 - SEQ_ME_TITLE
-Output: 4 - SEQ_PV_001
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-['#define', 'SEQ_GS_TITLE', '1']
-Pre form #define SEQ_SE_TITLE 2
-
-['#define', 'SEQ_SE_TITLE', '2']
-Pre form #define SEQ_ME_TITLE 3
-
-['#define', 'SEQ_ME_TITLE', '3']
-Pre form #define SEQ_PV_001 4
-['#define', 'SEQ_PV_001', '4']
-Pre form 
-[]
-
-Finished detection!
-0
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-['#define', 'SEQ_GS_TITLE', '1']
-Valid SEQ
----------
-Pre form #define SEQ_SE_TITLE 2
-
-['#define', 'SEQ_SE_TITLE', '2']
-Pre form #define SEQ_ME_TITLE 3
-
-['#define', 'SEQ_ME_TITLE', '3']
-Pre form #define SEQ_PV_001 4
-['#define', 'SEQ_PV_001', '4']
-Pre form 
-[]
-
-Finished detection!
-1
-Output: 1 - SEQ_GS_TITLE
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-['#define', 'SEQ_GS_TITLE', '1']
-Pre form #define SEQ_SE_TITLE 2
-
-['#define', 'SEQ_SE_TITLE', '2']
-Pre form #define SEQ_ME_TITLE 3
-
-['#define', 'SEQ_ME_TITLE', '3']
-Pre form #define SEQ_PV_001 4
-['#define', 'SEQ_PV_001', '4']
-Pre form 
-[]
-
-Finished detection!
-0
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-['#define', 'SEQ_GS_TITLE', '1']
-Valid bgm
----------
-Pre form #define SEQ_SE_TITLE 2
-
-['#define', 'SEQ_SE_TITLE', '2']
-Pre form #define SEQ_ME_TITLE 3
-
-['#define', 'SEQ_ME_TITLE', '3']
-Pre form #define SEQ_PV_001 4
-['#define', 'SEQ_PV_001', '4']
-Pre form 
-[]
-
-Finished detection!
-1
-Output: 1 - SEQ_GS_TITLE
-
-================ RESTART: C:\Users\raven\Downloads\sdat\make.py ================
-Pre form #define SEQ_GS_TITLE 1
-
-['#define', 'SEQ_GS_TITLE', '1']
-Valid BGM
----------
-Pre form #define SEQ_SE_TITLE 2
-
-['#define', 'SEQ_SE_TITLE', '2']
-Valid SE
----------
-Pre form #define SEQ_ME_TITLE 3
-
-['#define', 'SEQ_ME_TITLE', '3']
-Valid ME
----------
-Pre form #define SEQ_PV_001 4
-['#define', 'SEQ_PV_001', '4']
-Valid PV
----------
-Pre form 
-[]
-
-Finished detection!
-1
-Output: 1 - SEQ_GS_TITLE
-Output BGM
-1
-Output PV
-1
-Output SE
-1
-Output ME
-
-==================== RESTART: C:\Users\raven\Downloads\sdat\make.py ====================
-Pre form #define SEQ_GS_TITLE 1
-
-['#define', 'SEQ_GS_TITLE', '1']
-Valid BGM
----------
-Pre form #define SEQ_SE_TITLE 2
-
-['#define', 'SEQ_SE_TITLE', '2']
-Valid SE
----------
-Pre form #define SEQ_ME_TITLE 3
-
-['#define', 'SEQ_ME_TITLE', '3']
-Valid ME
----------
-Pre form #define SEQ_PV_001 4
-['#define', 'SEQ_PV_001', '4']
-Valid PV
----------
-Pre form 
-[]
-
-Finished detection!
-1
-Output: 1 - SEQ_GS_TITLE
-Output BGM
-1
-Output: 4 - 4
-Output PV
-1
-Output: 2 - 2
-Output SE
-1
-Output: 3 - 3
-Output ME
-Finished outputting Sound List
+print("Finished outputting Sound List")
