@@ -5,7 +5,7 @@ pvPrefix = "SEQ_PV"
 mePrefix = "SEQ_ME"
 sePrefix = "SEQ_SE"
 
-outputDir = ""
+outputDir = "../docs/sound_list.html"
 
 # Variable Inits
 bgmNames = []
