@@ -1,5 +1,7 @@
 "./tools/sndarc.exe" gs_sound_data.sarc
 
+"python3 ./tools/make_soundlist.py"
+
 @goto ok
 
 :ok
