@@ -1,0 +1,17 @@
+* {
+	margin: 0.25em;
+	font-family: sans-serif;
+}
+h1 {
+	font-weight: bold;
+}
+table, th, td {
+  border: 2px solid black;
+  border-collapse: collapse;
+  padding: 0.5em;
+}
+
+table {
+	width: 100%;
+	background-color: whitesmoke;
+}
