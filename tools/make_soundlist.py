@@ -1,6 +1,6 @@
 # Let's create definitions that people can change easily
-soundInclude = "../gs_sound_data.sbdl"
-bgmPrefix = "SEQ_BGM"
+soundInclude = "../pl_sound_data.sbdl"
+bgmPrefix = "SEQ_"
 pvPrefix = "SEQ_PV"
 mePrefix = "SEQ_ME"
 sePrefix = "SEQ_SE"
@@ -27,9 +27,6 @@ while True:
         line = si.readline()
         line = line.split()
         try:
-                if line[1].startswith(bgmPrefix) == True:
-                    bgmNames.append(line[1])
-                    bgmIds.append(line[2])
                 elif line[1].startswith(pvPrefix) == True:
                     pvNames.append(line[1])
                     pvIds.append(line[2])
@@ -39,6 +36,9 @@ while True:
                 elif line[1].startswith(mePrefix) == True:
                     meNames.append(line[1])
                     meIds.append(line[2])
+                else == True:
+                    bgmNames.append(line[1])
+                    bgmIds.append(line[2])
         except IndexError:
                 print("\nFinished detection!")
                 break
