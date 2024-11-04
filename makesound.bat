@@ -1,4 +1,4 @@
-"./tools/sndarc.exe" gs_sound_data.sarc
+"./tools/sndarc.exe" gl_sound_data.sarc
 
 "python3 ./tools/make_soundlist.py"
 
