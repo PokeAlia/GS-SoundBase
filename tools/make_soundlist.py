@@ -36,7 +36,7 @@ while True:
                 elif line[1].startswith(mePrefix) == True:
                     meNames.append(line[1])
                     meIds.append(line[2])
-                else == True:
+                else:
                     bgmNames.append(line[1])
                     bgmIds.append(line[2])
         except IndexError:
